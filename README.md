@@ -60,20 +60,20 @@ SpeechInjector(connectors: [SpeechConnector], vc: UIViewController)
 
 ( all are optional so if you do not want to use for example 'buttonColor' then delete 'buttonColor' from the init.
 
-<i><font color="green">Valid</font></i>
+<B><i><font color="green">Valid</font></i></B>
 
-SpeechInjector(connectors: <B>[SpeechConnector]</B>, vc: <B>UIViewController</B>, language: <B>String</B>, position: <B>SpeechInjector.SpeechButtonLocation</B>, buttonColor: <B>UIColor</B>, buttonRecordingColor: <B>UIColor</B>)
+SpeechInjector(connectors: <B>[connector1]</B>, vc: <B>self</B>, language: <B>"nl-NL"</B>, position: <B>.leftBottom</B>, buttonColor: <B>UIColor.blue</B>, buttonRecordingColor: <B>UIColor.red</B>)
 
-<i><font color="green">Valid</font></i>
+<B><i><font color="green">Valid</font></i></B>
 
-SpeechInjector(connectors: <B>[SpeechConnector]</B>, vc: <B>UIViewController</B>, language: <B>String</B>, position: <B>SpeechInjector.SpeechButtonLocation</B>)
+SpeechInjector(connectors: <B>[connector1,connector2,connector3]</B>, vc: <B>self</B>, language: <B>"en-US"</B>, position: <B>.rightBottom</B>)
 
-<i><font color="green">Valid</font></i>
+<B><i><font color="green">Valid</font></i></B>
 
-SpeechInjector(connectors: <B>[SpeechConnector]</B>, vc: <B>UIViewController</B>, language: <B>String</B>)
+SpeechInjector(connectors: <B>[connector1,connector2]</B>, vc: <B>self</B>, language: <B>"en-US"</B>)
 
 
-<i><font color="red">Invalid</font></i>
+<B><i><font color="red">Invalid</font></i></B>
 
 If you do not want to use a property and set it to 'nil'. So you either use it or delete it from the init.
 
@@ -118,6 +118,9 @@ You can add offsets to that function like this :
 <B>injector.placeSpeechButton(xOffset: 20, yOffset : 35)</B>
 
 Default the offset is <B>xOffset = 16 and yOffset =16)
+    
+
+FOR LANGUAGECODES CHECK : https://gist.github.com/JamieMason/3748498
   
 # Thats about it for now.... ! 
 
