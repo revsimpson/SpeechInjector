@@ -10,7 +10,7 @@ import Foundation
 import Speech
 import MaterialComponents.MaterialButtons
 
-class SpeechInjector : NSObject {
+public class SpeechInjector {
     
     enum SpeechButtonLocation {
         case letftTop, rightTop, leftBottom, rightBottom

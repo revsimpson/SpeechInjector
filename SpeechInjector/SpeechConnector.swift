@@ -12,7 +12,7 @@ protocol SpeechConnectorProtocol {
     var link : String { get }
 }
 
-class SpeechConnector: NSObject {
+public class SpeechConnector: NSObject {
     var words : [String]
     var actionClosure :(() -> ())
     
