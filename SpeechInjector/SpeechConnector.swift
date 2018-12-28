@@ -12,11 +12,11 @@ protocol SpeechConnectorProtocol {
     var link : String { get }
 }
 
-public class SpeechConnector: NSObject {
+public class SpeechConnector {
     var words : [String]
     var actionClosure :(() -> ())
     
-    required init(words:String... , actionClosure :@escaping (() -> ())) {
+    public init(words:String... , actionClosure :@escaping (() -> ())) {
         self.words = words
         self.actionClosure = actionClosure
     }

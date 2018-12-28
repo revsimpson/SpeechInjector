@@ -12,7 +12,7 @@ import MaterialComponents.MaterialButtons
 
 public class SpeechInjector {
     
-    enum SpeechButtonLocation {
+    public enum SpeechButtonLocation {
         case letftTop, rightTop, leftBottom, rightBottom
     }
     
@@ -31,7 +31,9 @@ public class SpeechInjector {
     private let buttonColor: UIColor
     private let buttonRecordingColor: UIColor
     
-    init(connectors:[SpeechConnector],vc:UIViewController,language: String = "nl-NL", position : SpeechButtonLocation = .rightBottom,buttonColor: UIColor = UIColor(red:0.30, green:0.50, blue:0.70, alpha:1.0) , buttonRecordingColor :UIColor = UIColor(red:0.94, green:0.17, blue:0.18, alpha:1.0)) {
+    
+    
+    public init(connectors:[SpeechConnector],vc:UIViewController,language: String = "nl-NL", position : SpeechButtonLocation = .rightBottom,buttonColor: UIColor = UIColor(red:0.30, green:0.50, blue:0.70, alpha:1.0) , buttonRecordingColor :UIColor = UIColor(red:0.94, green:0.17, blue:0.18, alpha:1.0)) {
         self.connectors = connectors
         self.speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: language))!
         self.vc = vc 
@@ -208,7 +210,7 @@ public class SpeechInjector {
     }
     
     // MARK: Public function
-    func placeSpeechButton(xOffset: CGFloat = 16, yOffset : CGFloat = 16) {
+    public func placeSpeechButton(xOffset: CGFloat = 16, yOffset : CGFloat = 16) {
         let plusImage = UIImage(named: "speech")!.withRenderingMode(.alwaysTemplate)
         speechButton.tintColor = UIColor.white
         _setButtonColor()
