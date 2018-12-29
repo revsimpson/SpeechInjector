@@ -51,7 +51,10 @@ class ViewController: UIViewController {
 Add the following privacy settings to your plist and tell the user why you need to use their microphone and speech recognition.
 
 <B>Privacy - Microphone Usage Description</B>
+
 <B>Privacy - Speech Recognition Usage Description</B>
+
+
 
 # Different init options for the SpeechInjector
 
