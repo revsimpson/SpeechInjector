@@ -46,6 +46,12 @@ class ViewController: UIViewController {
     }
 }
 
+# Plist
+
+Add the following privacy settings to your plist and tell the user why you need to use their microphone and speech recognition.
+
+<B>Privacy - Microphone Usage Description</B>
+<B>Privacy - Speech Recognition Usage Description</B>
 
 # Different init options for the SpeechInjector
 
@@ -53,29 +59,27 @@ You can set different options when you initiate a SpeechInjector
 
 <B>Basic</B> :
 
-SpeechInjector(connectors: [SpeechConnector], vc: UIViewController)
+SpeechInjector(connectors: [SpeechConnector], vc: UIViewController) <- Connectors and a vc is a must!
 
  
 <B>With options</B> :
 
-( all are optional so if you do not want to use for example 'buttonColor' then delete 'buttonColor' from the init.
+<B><i><font color="green">Valid</font></i></B>
+
+SpeechInjector(connectors: <B>[connector1]</B>, vc: <B>self</B>, language: <B>"nl-NL"</B>)
 
 <B><i><font color="green">Valid</font></i></B>
 
-SpeechInjector(connectors: <B>[connector1]</B>, vc: <B>self</B>, language: <B>"nl-NL"</B>, position: <B>.leftBottom</B>, buttonColor: <B>UIColor.blue</B>, buttonRecordingColor: <B>UIColor.red</B>)
+SpeechInjector(connectors: <B>[connector1,connector2,connector3]</B>, vc: <B>self</B>, language: <B>"en-US"</B>)
 
 <B><i><font color="green">Valid</font></i></B>
 
-SpeechInjector(connectors: <B>[connector1,connector2,connector3]</B>, vc: <B>self</B>, language: <B>"en-US"</B>, position: <B>.rightBottom</B>)
-
-<B><i><font color="green">Valid</font></i></B>
-
-SpeechInjector(connectors: <B>[connector1,connector2]</B>, vc: <B>self</B>, language: <B>"en-US"</B>)
+SpeechInjector(connectors: <B>[connector1,connector2]</B>, vc: <B>self</B>)
 
 
 <B><i><font color="red">Invalid</font></i></B>
 
-If you do not want to use a property and set it to 'nil'. So you either use it or delete it from the init.
+If you do not want to use a property do not set it to 'nil'. So you either use it or delete it from the init.
 
 So this is wrong : 
 
@@ -90,37 +94,74 @@ SpeechInjector(connectors: [connector1, connector2], vc: self, language: <font c
 
 If you do not use a property then just leave the whole thing out!
 
+FOR LANGUAGECODES CHECK : https://gist.github.com/JamieMason/3748498
 
-# Default settings
+
+
+# Default settings SpeechInjector
 
 
 When you do not use a property default settings will be used:
 
 language = "nl-NL"  (use your own country code to capture words in your own language!)
 
-position = ".rightBottom" 
 
-buttonColor = UIColor(red:0.30, green:0.50, blue:0.70, alpha:1.0) (blue)
 
-buttonRecordingColor = UIColor(red:0.94, green:0.17, blue:0.18, alpha:1.0) (red)
+# Placing the speechbutton and its defailt settings
+
+The basic placement of the button is when you have an instance of the SpeechInjector and you call
+
+<B>injector.placeSpeechButton()</B>  
+
+A button is placed with default settings. You can change the image of the button and the button tintcolor and elevation settings etc etc.
+Just like the SpeechInjector init... just fill what you want to use and leave out which you do not want to use and for the rest of the parameters defaults settings will apply.
+
+
+This is the default for the placeSpeechButton.
+
+
+<B>func placeSpeechButton(position : SpeechButtonLocation = .rightBottom,
+                                  buttonColor: UIColor = UIColor(red:0.30, green:0.50, blue:0.70, alpha:1.0) ,
+                                  buttonRecordingColor :UIColor = UIColor(red:0.94, green:0.17, blue:0.18, alpha:1.0),
+                                  buttonHeight:CGFloat = 60 ,
+                                  buttonWidth : CGFloat = 60,
+                                  xOffset: CGFloat = 16,
+                                  yOffset : CGFloat = 16,
+                                  image : UIImage = UIImage(named: "speech")!,
+                                  tintColor : UIColor = UIColor.white, elevationNormalState: CGFloat = 6.0,
+                                  elevationHighlightedState : CGFloat =  12.0)</B>
+
+So you can call for example: <B> 
+    
+injector.placeSpeechButton(position: .leftBottom,yOffset: 39, elevationNormalState = 14)
+
+
+OR
+
+
+injector.placeSpeechButton()   <--- Which uses all default values
+
+</B>
+
+The values you did not fill in will get the default values. 
+The standard image for the button is the microphone materialdesign button called speech so make sure you do not have also a picture in your project with the same name. Otherwise you can put any image in there you want.
+But again....do not fill paramaters with "nil" if you do not want to use them, because it will fail, just leave them out and it will work.
 
 # Extra offset after setting the position
 
 
-When you have set the position in your init... you can still change the offset of that position.
+When you have set the position in your placeSpeechButton ... you can still change the offset of that position.
 
 Remember where we have set the button : 
 
-<B>injector.placeSpeechButton()</B>
+<B>injector.placeSpeechButton(postion: right.bottom)</B>
 
 You can add offsets to that function like this :
 
-<B>injector.placeSpeechButton(xOffset: 20, yOffset : 35)</B>
+<B>injector.placeSpeechButton(postion: right.bottom, xOffset: 20, yOffset : 35)</B>
 
-Default the offset is <B>xOffset = 16 and yOffset =16)
+Default offset is <B>xOffset = 16 and yOffset =16)
     
-
-FOR LANGUAGECODES CHECK : https://gist.github.com/JamieMason/3748498
   
 # Thats about it for now.... ! 
 
