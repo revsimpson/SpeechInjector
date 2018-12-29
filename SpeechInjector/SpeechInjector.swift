@@ -17,29 +17,27 @@ public class SpeechInjector {
     }
     
     // Private class variables
-    private var speechRecognizer : SFSpeechRecognizer?
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     private var speechResult = SFSpeechRecognitionResult()
-    private var speechButton = MDCFloatingButton(frame: CGRect(x: 60, y: 60, width: 60, height: 60))
+    private var speechButton : MDCFloatingButton!
+    private var buttonColor: UIColor!
+    private var buttonRecordingColor: UIColor!
     
     // Init setters
+    
     private let vc : UIViewController
     private let connectors : [SpeechConnector]
-    private let position : SpeechButtonLocation?
-    private let buttonColor: UIColor
-    private let buttonRecordingColor: UIColor
+    private var speechRecognizer : SFSpeechRecognizer
     
-    
-    
-    public init(connectors:[SpeechConnector],vc:UIViewController,language: String = "nl-NL", position : SpeechButtonLocation = .rightBottom,buttonColor: UIColor = UIColor(red:0.30, green:0.50, blue:0.70, alpha:1.0) , buttonRecordingColor :UIColor = UIColor(red:0.94, green:0.17, blue:0.18, alpha:1.0)) {
+    public init(connectors:[SpeechConnector],
+                vc:UIViewController,
+                language: String = "nl-NL") {
+        
         self.connectors = connectors
         self.speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: language))!
         self.vc = vc 
-        self.position = position
-        self.buttonColor = buttonColor
-        self.buttonRecordingColor = buttonRecordingColor
     }
     
     // MARK: Private functions
@@ -50,7 +48,7 @@ public class SpeechInjector {
     private func _startSpeechRecording() {
         
         SFSpeechRecognizer.requestAuthorization { authStatus in
-
+            
             OperationQueue.main.addOperation {
                 var alertTitle = ""
                 var alertMsg = ""
@@ -127,7 +125,7 @@ public class SpeechInjector {
             // A recognition task is used for speech recognition sessions
             // A reference for the task is saved so it can be cancelled
             var triggeredByResult = false // makes sure all custom user actions are peformed only ones!
-            recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest) { result, error in
+            recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
                 var isFinal = false
                 
                 if let result = result {
@@ -135,7 +133,7 @@ public class SpeechInjector {
                     isFinal = result.isFinal
                     
                     self.speechResult = result
-                   
+                    
                     debugPrint(" captured word: \(result.bestTranscription.formattedString.lowercased()) ")
                     
                     let receivedSpeech = self.speechResult.bestTranscription.formattedString.lowercased()
@@ -201,7 +199,7 @@ public class SpeechInjector {
             case 1136,1334, 1920, 2208:
                 return (0,0)
             case 2688, 2436,1792:
-               return(44,38)
+                return(44,38)
             default:
                 return(0,0)
             }
@@ -210,12 +208,26 @@ public class SpeechInjector {
     }
     
     // MARK: Public function
-    public func placeSpeechButton(xOffset: CGFloat = 16, yOffset : CGFloat = 16, image : UIImage = UIImage(named: "speech")!, tintColor : UIColor = UIColor.white, elevationNormalState: CGFloat = 6.0, elevationHighlightedState : CGFloat =  12.0) {
+    public func placeSpeechButton(position : SpeechButtonLocation = .rightBottom,
+                                  buttonColor: UIColor = UIColor(red:0.30, green:0.50, blue:0.70, alpha:1.0) ,
+                                  buttonRecordingColor :UIColor = UIColor(red:0.94, green:0.17, blue:0.18, alpha:1.0),
+                                  buttonHeight:CGFloat = 60 ,
+                                  buttonWidth : CGFloat = 60,
+                                  xOffset: CGFloat = 16,
+                                  yOffset : CGFloat = 16,
+                                  image : UIImage = UIImage(named: "speech")!,
+                                  tintColor : UIColor = UIColor.white, elevationNormalState: CGFloat = 6.0,
+                                  elevationHighlightedState : CGFloat =  12.0) {
         
-        let plusImage = image.withRenderingMode(.alwaysTemplate)
+        
+        self.buttonColor = buttonColor
+        self.buttonRecordingColor = buttonRecordingColor
+        speechButton = MDCFloatingButton(frame: CGRect(x: 60, y: 60, width: buttonWidth, height: buttonHeight))
+        
+        let speechImage = image.withRenderingMode(.alwaysTemplate)
         speechButton.tintColor = tintColor
         _setButtonColor()
-        speechButton.setImage(plusImage, for: .normal)
+        speechButton.setImage(speechImage, for: .normal)
         speechButton.isUserInteractionEnabled = true
         speechButton.setElevation(ShadowElevation(rawValue: elevationNormalState), for: .normal)
         speechButton.setElevation(ShadowElevation(rawValue: elevationHighlightedState), for: .highlighted)
@@ -223,7 +235,7 @@ public class SpeechInjector {
         var xPos : CGFloat = 0.0
         var yPos : CGFloat = 0.0
         
-        switch position! {
+        switch position {
         case .leftBottom:
             xPos = xOffset
             yPos = vc.view.frame.height - speechButton.frame.height - yOffset -  _returnSafeAreaSize().bottom
@@ -239,7 +251,7 @@ public class SpeechInjector {
             xPos = vc.view.frame.width - speechButton.frame.width - xOffset - _returnSafeAreaSize().top
             yPos = yOffset
         }
- 
+        
         vc.view.addSubview(speechButton)
         
         speechButton.addTarget(self, action: #selector(_buttonAction(sender:)), for: .touchUpInside)
