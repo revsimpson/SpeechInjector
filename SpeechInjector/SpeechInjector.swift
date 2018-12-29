@@ -210,14 +210,15 @@ public class SpeechInjector {
     }
     
     // MARK: Public function
-    public func placeSpeechButton(xOffset: CGFloat = 16, yOffset : CGFloat = 16) {
-        let plusImage = UIImage(named: "speech")!.withRenderingMode(.alwaysTemplate)
-        speechButton.tintColor = UIColor.white
+    public func placeSpeechButton(xOffset: CGFloat = 16, yOffset : CGFloat = 16, image : UIImage = UIImage(named: "speech")!, tintColor : UIColor = UIColor.white, elevationNormalState: CGFloat = 6.0, elevationHighlightedState : CGFloat =  12.0) {
+        
+        let plusImage = image.withRenderingMode(.alwaysTemplate)
+        speechButton.tintColor = tintColor
         _setButtonColor()
         speechButton.setImage(plusImage, for: .normal)
         speechButton.isUserInteractionEnabled = true
-        speechButton.setElevation(ShadowElevation(rawValue: 6.0), for: .normal)
-        speechButton.setElevation(ShadowElevation(rawValue: 12.0), for: .highlighted)
+        speechButton.setElevation(ShadowElevation(rawValue: elevationNormalState), for: .normal)
+        speechButton.setElevation(ShadowElevation(rawValue: elevationHighlightedState), for: .highlighted)
         
         var xPos : CGFloat = 0.0
         var yPos : CGFloat = 0.0
@@ -239,7 +240,6 @@ public class SpeechInjector {
             yPos = yOffset
         }
  
-       
         vc.view.addSubview(speechButton)
         
         speechButton.addTarget(self, action: #selector(_buttonAction(sender:)), for: .touchUpInside)
