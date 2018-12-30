@@ -5,6 +5,12 @@ The easiest way to apply voice-commands in your IOS app.
 
 ![](Dec-30-2018%2022-09-45.gif)
 
+# Installation
+
+
+<B>pod install SpeechInjector</B>
+
+
 # How to use?
 
 Here is some example code how to use it :
