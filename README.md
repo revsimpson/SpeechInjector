@@ -103,6 +103,7 @@ FOR LANGUAGECODES CHECK : https://gist.github.com/JamieMason/3748498
 
 
 
+
 # Default settings SpeechInjector
 
 
@@ -112,7 +113,8 @@ language = "nl-NL"  (use your own country code to capture words in your own lang
 
 
 
-# Placing the speechbutton and its defailt settings
+
+# Placing the speechbutton and its default settings
 
 The basic placement of the button is when you have an instance of the SpeechInjector and you call
 
@@ -151,6 +153,8 @@ injector.placeSpeechButton()   <--- Which uses all default values
 The values you did not fill in will get the default values. 
 The standard image for the button is the microphone materialdesign button called speech so make sure you do not have also a picture in your project with the same name. Otherwise you can put any image in there you want.
 But again....do not fill paramaters with "nil" if you do not want to use them, because it will fail, just leave them out and it will work.
+
+
 
 # Extra offset after setting the position
 
