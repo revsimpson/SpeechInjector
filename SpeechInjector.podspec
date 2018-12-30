@@ -8,7 +8,7 @@ s.summary = "The easiest way to add voice-commands to your IOS app."
 s.requires_arc = true
 
 # 2
-s.version = "1.0.6"
+s.version = "1.0.10"
 
 # 3
 s.license = { :type => "BSD", :file => "LICENSE" }
@@ -28,7 +28,7 @@ s.framework = "UIKit"
 s.dependency  'MaterialComponents/Buttons'
 
 # 8
-s.source_files = "SpeechInjector/**/*.{swift}"
+s.source_files = "SpeechInjector/**/*.{swift,xcassets}"
 
 # 9
 s.resources = "SpeechInjector/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"

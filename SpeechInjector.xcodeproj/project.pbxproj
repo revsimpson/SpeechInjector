@@ -10,7 +10,7 @@
 		889829E95373DE405D4069EC /* libPods-SpeechInjector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B56D1A333BA9F9D85E26869 /* libPods-SpeechInjector.a */; };
 		AF2DCB9221D54C0400185552 /* SpeechInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DCB9021D54C0400185552 /* SpeechInjector.swift */; };
 		AF2DCB9321D54C0400185552 /* SpeechConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DCB9121D54C0400185552 /* SpeechConnector.swift */; };
-		AF2DCBB321D6400F00185552 /* SpeechInjectorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2DCBB221D6400F00185552 /* SpeechInjectorAssets.xcassets */; };
+		AF2DCBB321D6400F00185552 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2DCBB221D6400F00185552 /* Assets.xcassets */; };
 		AF4D45D621D547E700C6B488 /* SpeechInjector.h in Headers */ = {isa = PBXBuildFile; fileRef = AF4D45D421D547E700C6B488 /* SpeechInjector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -19,7 +19,7 @@
 		8B56D1A333BA9F9D85E26869 /* libPods-SpeechInjector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpeechInjector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2DCB9021D54C0400185552 /* SpeechInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechInjector.swift; sourceTree = "<group>"; };
 		AF2DCB9121D54C0400185552 /* SpeechConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechConnector.swift; sourceTree = "<group>"; };
-		AF2DCBB221D6400F00185552 /* SpeechInjectorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SpeechInjectorAssets.xcassets; sourceTree = "<group>"; };
+		AF2DCBB221D6400F00185552 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF4D45D121D547E700C6B488 /* SpeechInjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpeechInjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4D45D421D547E700C6B488 /* SpeechInjector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechInjector.h; sourceTree = "<group>"; };
 		AF4D45D521D547E700C6B488 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 				AF2DCB9121D54C0400185552 /* SpeechConnector.swift */,
 				AF2DCB9021D54C0400185552 /* SpeechInjector.swift */,
 				AF4D45D521D547E700C6B488 /* Info.plist */,
-				AF2DCBB221D6400F00185552 /* SpeechInjectorAssets.xcassets */,
+				AF2DCBB221D6400F00185552 /* Assets.xcassets */,
 			);
 			path = SpeechInjector;
 			sourceTree = "<group>";
@@ -155,7 +155,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF2DCBB321D6400F00185552 /* SpeechInjectorAssets.xcassets in Resources */,
+				AF2DCBB321D6400F00185552 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
