@@ -3,6 +3,10 @@ contact : revsimpson@casema.nl
 
 The easiest way to apply voice-commands in your IOS app.
 
+Simple add words you want your program to react to and after that program or call functions you want to react on that specific word or set of words. You can make as much different sets as you want. I no time you have your app fully navigational with voice-commands!
+
+
+
 ![](Dec-30-2018%2022-09-45.gif)
 
 # Installation
