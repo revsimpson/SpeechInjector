@@ -226,7 +226,7 @@ public class SpeechInjector {
         
         let bundle = Bundle(for: SpeechInjector.self)
         var finalImage = image
-        if finalImage?.size.width == 0.0 {
+        if finalImage == nil {
             finalImage = UIImage(named: "speech", in: bundle, compatibleWith: nil)
         }
         
