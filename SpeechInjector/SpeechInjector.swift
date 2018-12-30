@@ -215,7 +215,7 @@ public class SpeechInjector {
                                   buttonWidth : CGFloat = 60,
                                   xOffset: CGFloat = 16,
                                   yOffset : CGFloat = 16,
-                                  image : UIImage = UIImage(named: "speech.png")!,
+                                  image : UIImage? = nil,
                                   tintColor : UIColor = UIColor.white, elevationNormalState: CGFloat = 6.0,
                                   elevationHighlightedState : CGFloat =  12.0) {
         
@@ -224,7 +224,13 @@ public class SpeechInjector {
         self.buttonRecordingColor = buttonRecordingColor
         speechButton = MDCFloatingButton(frame: CGRect(x: 60, y: 60, width: buttonWidth, height: buttonHeight))
         
-        let speechImage = image.withRenderingMode(.alwaysTemplate)
+        let bundle = Bundle(for: SpeechInjector.self)
+        var finalImage = image
+        if finalImage?.size.width == 0.0 {
+            finalImage = UIImage(named: "speech", in: bundle, compatibleWith: nil)
+        }
+        
+        let speechImage = finalImage!.withRenderingMode(.alwaysTemplate)
         speechButton.tintColor = tintColor
         _setButtonColor()
         speechButton.setImage(speechImage, for: .normal)

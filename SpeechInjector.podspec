@@ -8,7 +8,7 @@ s.summary = "The easiest way to add voice-commands to your IOS app."
 s.requires_arc = true
 
 # 2
-s.version = "1.0.11"
+s.version = "1.0.12"
 
 # 3
 s.license = { :type => "BSD", :file => "LICENSE" }
