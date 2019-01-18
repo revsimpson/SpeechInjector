@@ -67,6 +67,8 @@ class ViewController: UIViewController {
     }
 }
 
+If the button is not place correctly in your app set the injector.placeSpeechButton() in viewDidAppear
+
 # Plist
 
 Add the following privacy settings to your plist and tell the user why you need to use their microphone and speech recognition.
