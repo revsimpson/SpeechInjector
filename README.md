@@ -14,7 +14,7 @@ Simple add words you want your program to react to and after that program or cal
 # Installation
 
 
-<B>pod 'SpeechInjector','~> 1.0.15'</B>
+<B>pod 'SpeechInjector','~> 1.1.0'</B>
 
 
 # Demo Application 
