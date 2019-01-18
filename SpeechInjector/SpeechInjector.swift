@@ -27,7 +27,7 @@ public class SpeechInjector {
     
     // Init setters
     
-    private let vc : UIViewController
+    private weak var vc : UIViewController?
     private let connectors : [SpeechConnector]
     private var speechRecognizer : SFSpeechRecognizer
     
@@ -75,10 +75,10 @@ public class SpeechInjector {
                 if alertTitle != "" {
                     let alert = UIAlertController(title: alertTitle, message: alertMsg, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
-                        self.vc.dismiss(animated: true, completion: nil)
+                        self.vc!.dismiss(animated: true, completion: nil)
                     }))
                     
-                    self.vc.present(alert, animated: true, completion: nil)
+                    self.vc!.present(alert, animated: true, completion: nil)
                 }
             }
         }
@@ -178,10 +178,10 @@ public class SpeechInjector {
         if !available {
             let alert = UIAlertController(title: "There was a problem accessing the recognizer", message: "Please try again later", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
-                self.vc.dismiss(animated: true, completion: nil)
+                self.vc!.dismiss(animated: true, completion: nil)
             }))
             
-            self.vc.present(alert, animated: true, completion: nil)
+            self.vc!.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -199,7 +199,7 @@ public class SpeechInjector {
             case 1136,1334, 1920, 2208:
                 return (0,0)
             case 2688, 2436,1792:
-                return(44,38)
+                return(44,38) 
             default:
                 return(0,0)
             }
@@ -244,21 +244,21 @@ public class SpeechInjector {
         switch position {
         case .leftBottom:
             xPos = xOffset
-            yPos = vc.view.frame.height - speechButton.frame.height - yOffset -  _returnSafeAreaSize().bottom
+            yPos = vc!.view.frame.height - speechButton.frame.height - yOffset -  _returnSafeAreaSize().bottom
         case .letftTop :
             xPos = xOffset
             yPos = yOffset - _returnSafeAreaSize().top
             
         case .rightBottom :
-            xPos = vc.view.frame.width - speechButton.frame.width - xOffset
-            yPos = vc.view.frame.height - speechButton.frame.height - yOffset - _returnSafeAreaSize().bottom
+            xPos = vc!.view.frame.width - speechButton.frame.width - xOffset
+            yPos = vc!.view.frame.height - speechButton.frame.height - yOffset - _returnSafeAreaSize().bottom
             
         case .rightTop :
-            xPos = vc.view.frame.width - speechButton.frame.width - xOffset - _returnSafeAreaSize().top
+            xPos = vc!.view.frame.width - speechButton.frame.width - xOffset - _returnSafeAreaSize().top
             yPos = yOffset
         }
         
-        vc.view.addSubview(speechButton)
+        vc!.view.addSubview(speechButton)
         
         speechButton.addTarget(self, action: #selector(_buttonAction(sender:)), for: .touchUpInside)
         speechButton.frame.origin.x = xPos
